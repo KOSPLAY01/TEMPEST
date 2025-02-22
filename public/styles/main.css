@@ -1,0 +1,17 @@
+
+body {
+         font-family: 'Roboto', sans-serif;
+         background: #f0f8ff;
+     }
+     .fade-in {
+         animation: fadeIn 1s ease-in-out;
+     }
+     @keyframes fadeIn {
+         from {
+             opacity: 0;
+         }
+         to {
+             opacity: 1;
+         }
+    }
+
