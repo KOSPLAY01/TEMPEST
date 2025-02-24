@@ -2,6 +2,12 @@ import express from 'express';
 import bodyParser from 'body-parser';
 import axios from 'axios';
 import dotenv from 'dotenv';
+import { fileURLToPath } from 'url';
+import path from 'path';
+
+// Fix __dirname in ES Module
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
 
 dotenv.config(); // Load API key from .env
 
@@ -11,7 +17,7 @@ const port = process.env.PORT || 3000;
 app.use(express.static('public'));   
 app.use(bodyParser.urlencoded({ extended: true }));
 app.set('view engine', 'ejs');
-app.set("views", __dirname + "/views"); 
+app.set("views", path.join(__dirname, "views")); 
 
 app.get('/', (req, res) => {
     res.render('index', { city: null, temp: null, weather: null, icon: null, error: null });
