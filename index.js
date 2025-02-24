@@ -6,11 +6,12 @@ import dotenv from 'dotenv';
 dotenv.config(); // Load API key from .env
 
 const app = express();
-const port = 3000;
+const port = process.env.PORT || 3000;
 
 app.use(express.static('public'));   
 app.use(bodyParser.urlencoded({ extended: true }));
 app.set('view engine', 'ejs');
+app.set("views", __dirname + "/views"); 
 
 app.get('/', (req, res) => {
     res.render('index', { city: null, temp: null, weather: null, icon: null, error: null });
